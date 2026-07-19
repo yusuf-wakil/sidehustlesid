@@ -1,0 +1,8 @@
+<!doctype html><script>
+(async () => {
+  const name = new URLSearchParams(location.search).get('f');
+  const r = await fetch('./' + name);
+  const buf = await r.arrayBuffer();
+  parent.postMessage({kind: 'sid-file', name, buf}, '*', [buf]);
+})();
+</script>
